@@ -1,0 +1,23 @@
+项目目标：实现在eclipse上编译java web项目的时候自动生成war包，并通过svn上传部署到新浪sae平台的流程。省却手动导出war文件，然后再手动通过网页上传war文件的麻烦。以此方便开发调试。
+
+安装配置：
+
+1. 下载安装eclipse，不用我废话了。
+
+2. 新建一个"Dynamic Web Project"，大家应该也都很熟。
+
+3. 下载svnant所需的6个jar文件，http://sae-java-deploy.googlecode.com/svn/trunk/svnant ，放到一个本地目录里。
+
+4. 如果你需要用到sae的接口，比如要连接数据库，还需要把sae的jar文件也加到项目属性的Java Build Path的Libraries里面。下载 http://sae4java.sinaapp.com/lib/sae-1.1.0-all.zip ，解压后得到jar文件。
+
+5. 下载ant文件，http://sae-java-deploy.googlecode.com/svn/trunk/sae_deploy.xml ，放到项目的根目录下。
+
+6. 编辑sae_deploy.xml，修改4个property的值。
+  * sae.app_name是你的sae应用名，也即二级域名。
+  * sae.user是你的sae用户名，是一个邮箱名。
+  * sae.pwd是你的sae密码。
+  * svnant.dir是前面第3步存放jar文件的目录。
+
+7. 编辑项目属性，在Builders分类下点击New按钮，选择Ant Builder，点击OK按钮。输入名字：sae-deploy（或者其他你喜欢的名字），然后设定buildfile为第5步下载的xml文件。最后点击OK按钮。
+
+8. 设置完成。现在每次编译项目都会自动生成war文件并上传到sae平台。如果你设置了自动编译，那么每次保存java文件都会自动执行这个过程。
