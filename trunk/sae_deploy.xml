@@ -11,13 +11,13 @@
 
 <project name="sae_deploy" default="commit" basedir=".">
 	<property name="sae.app_name" value="****" />
-	<property name="sae.user" value="****@gmail.com" />
-	<property name="sae.pwd" value="****" />
+	<property name="sae.user" value="******@gmail.com" />
+	<property name="sae.pwd" value="******" />
 	<property name="sae.ver" value="1" />
 	<property name="web.dir" value="WebContent" />
 	<property name="temp.dir" value="build/web" />
 	<property name="svn.dir" value="../svn" />
-	<property name="svn.jar.dir" value="../lib/svnant" />
+	<property name="svnant.dir" value="../lib/svnant" />
 
 	<target name="build" depends="checkout">
 		<delete dir="${temp.dir}" />
@@ -43,7 +43,7 @@
 	</target>
 
 	<path id="svnant.classpath">
-		<fileset dir="${svn.jar.dir}">
+		<fileset dir="${svnant.dir}">
 			<include name="*.jar" />
 		</fileset>
 	</path>
